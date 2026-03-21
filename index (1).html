@@ -1,0 +1,2257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Precision Pour | Bartending Services | Ocala, FL</title>
+  <meta name="description" content="Precision Pour LLC — Professional mobile bartending services in Ocala, Florida. Fully insured dry hire bartenders for weddings, corporate events, parties, and more." />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8CC7A;
+      --gold-dark: #8B6914;
+      --black: #0A0A0A;
+      --black-mid: #111111;
+      --black-card: #161616;
+      --black-border: #222222;
+      --white: #F5F0E8;
+      --white-dim: #B0A898;
+      --brown: #8B5E3C;
+      --brown-light: #C4895A;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ─── NOISE TEXTURE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 2px; }
+
+    /* ─── TYPOGRAPHY ─── */
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+
+    .section-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .section-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--white-dim);
+      line-height: 1.8;
+      max-width: 540px;
+    }
+
+    /* ─── GOLD DIVIDER ─── */
+    .gold-line {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 1.5rem 0;
+    }
+
+    /* ─── BUTTONS ─── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 1rem 2.2rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+      z-index: -1;
+    }
+
+    .btn-primary:hover {
+      color: var(--black);
+    }
+
+    .btn-primary:hover::before {
+      transform: scaleX(1);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: transparent;
+      border: none;
+      color: var(--white-dim);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 1rem 1.5rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .btn-ghost:hover {
+      color: var(--gold-light);
+    }
+
+    /* ─── NAVIGATION ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.5rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.4s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(20px);
+      padding: 1rem 4rem;
+      border-bottom: 1px solid var(--black-border);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-light);
+    }
+
+    .nav-cta {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: transparent;
+      border: 1px solid var(--gold);
+      padding: 0.6rem 1.5rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+      transition: all 0.3s ease;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 0 4rem;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(201, 168, 76, 0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(139, 94, 60, 0.04) 0%, transparent 60%),
+        var(--black);
+    }
+
+    .hero-hex-grid {
+      position: absolute;
+      right: -5%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 55%;
+      height: 100%;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='69' viewBox='0 0 60 69' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 34.5L15 8.5L45 8.5L60 34.5L45 60.5L15 60.5Z' fill='none' stroke='%23C9A84C' stroke-width='1'/%3E%3C/svg%3E");
+      background-size: 60px 69px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+
+    .hero-eyebrow-line {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero-eyebrow-text {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 7vw, 6rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.4s;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold-light);
+      display: block;
+    }
+
+    .hero-subtitle {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--white-dim);
+      line-height: 1.9;
+      margin-bottom: 3rem;
+      max-width: 480px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.6s;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.8s;
+    }
+
+    .hero-stats {
+      position: absolute;
+      bottom: 4rem;
+      right: 4rem;
+      display: flex;
+      gap: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 1s;
+    }
+
+    .hero-stat {
+      text-align: right;
+    }
+
+    .hero-stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .hero-stat-label {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+      margin-top: 0.3rem;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 4rem;
+      left: 4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 1.2s;
+    }
+
+    .hero-scroll-line {
+      width: 40px;
+      height: 1px;
+      background: var(--gold-dark);
+    }
+
+    .hero-scroll-text {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+    }
+
+    /* ─── SECTIONS ─── */
+    section {
+      padding: 8rem 4rem;
+      position: relative;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ─── TICKER BAND ─── */
+    .ticker-band {
+      background: var(--gold);
+      padding: 0.9rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ticker-inner {
+      display: inline-flex;
+      animation: ticker 25s linear infinite;
+      gap: 0;
+    }
+
+    .ticker-item {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--black);
+      padding: 0 2.5rem;
+    }
+
+    .ticker-dot {
+      color: var(--black-mid);
+      opacity: 0.4;
+    }
+
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ─── ABOUT ─── */
+    #about {
+      background: var(--black-mid);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-hex {
+      width: 100%;
+      aspect-ratio: 1;
+      max-width: 420px;
+      position: relative;
+    }
+
+    .about-hex-frame {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-dark));
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      padding: 2px;
+    }
+
+    .about-hex-inner {
+      width: 100%;
+      height: 100%;
+      background: var(--black-card);
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem;
+      text-align: center;
+    }
+
+    .about-hex-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .about-hex-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .about-hex-text {
+      font-size: 0.8rem;
+      color: var(--white-dim);
+      line-height: 1.7;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -1rem;
+      right: -1rem;
+      background: var(--gold);
+      color: var(--black);
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .about-badge-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .about-badge-text {
+      font-size: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      line-height: 1.3;
+    }
+
+    .about-pillars {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .about-pillar {
+      padding: 1.5rem;
+      border: 1px solid var(--black-border);
+      border-left: 2px solid var(--gold);
+      transition: border-color 0.3s ease;
+    }
+
+    .about-pillar:hover {
+      border-color: var(--gold);
+      border-left-color: var(--gold-light);
+    }
+
+    .about-pillar-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--gold-light);
+      margin-bottom: 0.4rem;
+    }
+
+    .about-pillar-text {
+      font-size: 0.75rem;
+      color: var(--white-dim);
+      line-height: 1.7;
+    }
+
+    /* ─── SERVICES ─── */
+    #services {
+      background: var(--black);
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .services-header .gold-line {
+      margin: 1.5rem auto;
+    }
+
+    .services-header .section-subtitle {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: var(--black-border);
+    }
+
+    .service-card {
+      background: var(--black-card);
+      padding: 3rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      cursor: default;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-card:hover {
+      background: #1a1a1a;
+    }
+
+    .service-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-weight: 700;
+      color: #2a2a2a;
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      transition: color 0.4s ease;
+    }
+
+    .service-card:hover .service-number {
+      color: var(--gold);
+    }
+
+    .service-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+    }
+
+    .service-desc {
+      font-size: 0.78rem;
+      color: var(--white-dim);
+      line-height: 1.8;
+    }
+
+    /* ─── PACKAGES ─── */
+    #packages {
+      background: var(--black-mid);
+    }
+
+    .packages-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .packages-header .gold-line {
+      margin: 1.5rem auto;
+    }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .package-card {
+      background: var(--black-card);
+      border: 1px solid var(--black-border);
+      padding: 3rem 2.5rem;
+      position: relative;
+      transition: all 0.4s ease;
+    }
+
+    .package-card.featured {
+      border-color: var(--gold);
+      background: #141209;
+    }
+
+    .package-card.featured::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--black);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.3rem 1.2rem;
+    }
+
+    .package-tier {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .package-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .package-guests {
+      font-size: 0.75rem;
+      color: var(--white-dim);
+      margin-bottom: 2rem;
+    }
+
+    .package-price {
+      display: flex;
+      align-items: baseline;
+      gap: 0.3rem;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--black-border);
+    }
+
+    .package-price-currency {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+    }
+
+    .package-price-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+
+    .package-price-note {
+      font-size: 0.7rem;
+      color: var(--white-dim);
+      align-self: flex-end;
+      padding-bottom: 0.3rem;
+    }
+
+    .package-features {
+      list-style: none;
+      margin-bottom: 2.5rem;
+    }
+
+    .package-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      font-size: 0.78rem;
+      color: var(--white-dim);
+      line-height: 1.6;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .package-features li::before {
+      content: '◆';
+      color: var(--gold);
+      font-size: 0.5rem;
+      flex-shrink: 0;
+      margin-top: 0.3rem;
+    }
+
+    .package-btn {
+      display: block;
+      text-align: center;
+      width: 100%;
+      padding: 0.9rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .package-btn-outline {
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      background: transparent;
+    }
+
+    .package-btn-outline:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .package-btn-filled {
+      background: var(--gold);
+      color: var(--black);
+      border: 1px solid var(--gold);
+    }
+
+    .package-btn-filled:hover {
+      background: var(--gold-light);
+    }
+
+    .packages-addons {
+      background: var(--black-card);
+      border: 1px solid var(--black-border);
+      padding: 3rem;
+    }
+
+    .addons-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      color: var(--white);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .addons-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .addon-item {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      border: 1px solid var(--black-border);
+      transition: border-color 0.3s ease;
+    }
+
+    .addon-item:hover {
+      border-color: var(--gold-dark);
+    }
+
+    .addon-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+
+    .addon-name {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--white-dim);
+      text-transform: uppercase;
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    #how-it-works {
+      background: var(--black);
+    }
+
+    .hiw-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .hiw-header .gold-line {
+      margin: 1.5rem auto;
+    }
+
+    .hiw-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      position: relative;
+    }
+
+    .hiw-steps::before {
+      content: '';
+      position: absolute;
+      top: 2.5rem;
+      left: 12.5%;
+      right: 12.5%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-dark), var(--gold), var(--gold-dark), transparent);
+    }
+
+    .hiw-step {
+      text-align: center;
+      padding: 0 2rem;
+      position: relative;
+    }
+
+    .hiw-step-number {
+      width: 5rem;
+      height: 5rem;
+      background: var(--black-card);
+      border: 1px solid var(--gold-dark);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      transition: all 0.3s ease;
+    }
+
+    .hiw-step:hover .hiw-step-number {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .hiw-step-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+    }
+
+    .hiw-step-desc {
+      font-size: 0.78rem;
+      color: var(--white-dim);
+      line-height: 1.8;
+    }
+
+    /* ─── TRUST BAR ─── */
+    .trust-bar {
+      background: var(--black-card);
+      border-top: 1px solid var(--black-border);
+      border-bottom: 1px solid var(--black-border);
+      padding: 3rem 4rem;
+    }
+
+    .trust-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .trust-item-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .trust-item-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--gold-light);
+      margin-bottom: 0.3rem;
+    }
+
+    .trust-item-desc {
+      font-size: 0.72rem;
+      color: var(--white-dim);
+      line-height: 1.7;
+    }
+
+    /* ─── GALLERY ─── */
+    #gallery {
+      background: var(--black-mid);
+      padding: 8rem 0;
+    }
+
+    .gallery-header {
+      text-align: center;
+      padding: 0 4rem;
+      margin-bottom: 4rem;
+    }
+
+    .gallery-header .gold-line {
+      margin: 1.5rem auto;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 220px);
+      gap: 2px;
+    }
+
+    .gallery-item {
+      background: var(--black-card);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      border: 1px solid var(--black-border);
+      transition: border-color 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery-item:first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-item:hover {
+      border-color: var(--gold-dark);
+    }
+
+    .gallery-placeholder-icon {
+      font-size: 2.5rem;
+      opacity: 0.3;
+    }
+
+    .gallery-placeholder-text {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+      opacity: 0.4;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(201, 168, 76, 0.15), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-cta {
+      text-align: center;
+      padding: 3rem 4rem 0;
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    #testimonials {
+      background: var(--black);
+    }
+
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .testimonials-header .gold-line {
+      margin: 1.5rem auto;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .testimonial-card {
+      background: var(--black-card);
+      border: 1px solid var(--black-border);
+      padding: 2.5rem;
+      position: relative;
+      transition: border-color 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      border-color: var(--gold-dark);
+    }
+
+    .testimonial-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      color: var(--gold);
+      line-height: 0.5;
+      margin-bottom: 1.5rem;
+      opacity: 0.4;
+    }
+
+    .testimonial-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .testimonial-avatar {
+      width: 40px;
+      height: 40px;
+      background: var(--gold-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--black);
+      font-weight: 600;
+    }
+
+    .testimonial-name {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .testimonial-event {
+      font-size: 0.7rem;
+      color: var(--gold);
+      margin-top: 0.2rem;
+    }
+
+    .testimonial-stars {
+      color: var(--gold);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+    }
+
+    .testimonials-placeholder {
+      text-align: center;
+      padding: 4rem;
+      background: var(--black-card);
+      border: 1px dashed var(--black-border);
+    }
+
+    .testimonials-placeholder p {
+      font-size: 0.8rem;
+      color: var(--white-dim);
+      line-height: 1.8;
+    }
+
+    /* ─── FAQ ─── */
+    #faq {
+      background: var(--black-mid);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--black-border);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      text-align: left;
+      padding: 1.5rem 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color 0.3s ease;
+    }
+
+    .faq-question:hover {
+      color: var(--gold-light);
+    }
+
+    .faq-icon {
+      color: var(--gold);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      font-size: 0.82rem;
+      color: var(--white-dim);
+      line-height: 1.9;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding-bottom: 1.5rem;
+    }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      background: var(--black);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .contact-info-items {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+    }
+
+    .contact-info-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid var(--gold-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-info-label {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-info-value {
+      font-size: 0.85rem;
+      color: var(--white);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--black-card);
+      border: 1px solid var(--black-border);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 300;
+      padding: 0.9rem 1.2rem;
+      outline: none;
+      transition: border-color 0.3s ease;
+      appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold-dark);
+    }
+
+    .form-group select option {
+      background: var(--black-card);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-submit {
+      background: var(--gold);
+      border: none;
+      color: var(--black);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 1.1rem 2.5rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      align-self: flex-start;
+    }
+
+    .form-submit:hover {
+      background: var(--gold-light);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black-card);
+      border-top: 1px solid var(--black-border);
+      padding: 4rem 4rem 2rem;
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 4rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--black-border);
+      margin-bottom: 2rem;
+    }
+
+    .footer-brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .footer-brand-name span {
+      color: var(--gold);
+    }
+
+    .footer-brand-tagline {
+      font-size: 0.7rem;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-brand-desc {
+      font-size: 0.78rem;
+      color: var(--white-dim);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--black-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white-dim);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+
+    .footer-social a:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .footer-col-title {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      color: var(--white-dim);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold-light);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copyright {
+      font-size: 0.72rem;
+      color: var(--white-dim);
+    }
+
+    .footer-insurance {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.7rem;
+      color: var(--gold);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── MOBILE MENU ─── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10,10,10,0.98);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: color 0.3s ease;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--gold-light);
+    }
+
+    .mobile-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      background: none;
+      border: none;
+      color: var(--gold);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      nav { padding: 1.5rem 2rem; }
+      nav.scrolled { padding: 1rem 2rem; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; }
+
+      section { padding: 6rem 2rem; }
+      #hero { padding: 0 2rem; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-hex { max-width: 280px; margin: 0 auto; }
+
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .packages-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto 4rem; }
+      .addons-grid { grid-template-columns: repeat(2, 1fr); }
+      .hiw-steps { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
+      .hiw-steps::before { display: none; }
+      .testimonials-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+      .faq-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+      .trust-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-stats { position: relative; bottom: auto; right: auto; margin-top: 3rem; justify-content: flex-start; }
+      .hero-scroll { display: none; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 180px); }
+      .gallery-item:first-child { grid-column: span 1; grid-row: span 1; }
+    }
+
+    @media (max-width: 640px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+      .hero-title { font-size: 3rem; }
+      .addons-grid { grid-template-columns: 1fr 1fr; }
+      .trust-grid { grid-template-columns: 1fr 1fr; }
+      section { padding: 5rem 1.5rem; }
+      .trust-bar { padding: 2rem 1.5rem; }
+      footer { padding: 3rem 1.5rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAVIGATION ─── -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">Precision <span>Pour</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#packages">Packages</a></li>
+      <li><a href="#how-it-works">Process</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Book Your Event</a>
+    <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ─── MOBILE MENU ─── -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" onclick="toggleMenu()">✕</button>
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#services" onclick="toggleMenu()">Services</a>
+    <a href="#packages" onclick="toggleMenu()">Packages</a>
+    <a href="#how-it-works" onclick="toggleMenu()">Process</a>
+    <a href="#faq" onclick="toggleMenu()">FAQ</a>
+    <a href="#contact" onclick="toggleMenu()">Book Now</a>
+  </div>
+
+  <!-- ─── HERO ─── -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-hex-grid"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Crafted Drinks.<br>
+        <em>Elevated Events.</em>
+      </h1>
+      <p class="hero-subtitle">
+        Precision Pour LLC brings professional mobile bartending to your event — fully insured, dry hire, and designed to make your occasion unforgettable. From intimate gatherings to 200-guest celebrations.
+      </p>
+      <div class="hero-actions">
+        <a href="#packages" class="btn-primary">View Packages</a>
+        <a href="#contact" class="btn-ghost">Request a Quote →</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-number">$2M</div>
+        <div class="hero-stat-label">Insured</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">200+</div>
+        <div class="hero-stat-label">Guests Served</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">100%</div>
+        <div class="hero-stat-label">Satisfaction</div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      <span class="hero-scroll-text">Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- ─── TICKER ─── -->
+  <div class="ticker-band">
+    <div class="ticker-inner">
+      <span class="ticker-item">Weddings</span><span class="ticker-dot">◆</span>
+      <span class="ticker-item">Corporate Events</span><span class="ticker-dot">◆</span>
+      <span class="ticker-item">Fraternity & Sorority Events</span><span class="ticker-dot">◆</span>
+      <span class="ticker-item">Birthday Parties</span><span class="ticker-dot">◆</span>
+      <span class="ticker-item">Graduation Parties</span><span class="ticker-dot">◆</span>
+      <span class="ticker-item">Holiday Parties</span><span class="ticker-dot">◆</span>
+      <span class="ticker-item">Baby Showers</span><span class="ticker-dot">◆</span>
+      <span class="ticker-item">Private Events</span><span class="ticker-dot">◆</span>
+      <span class="ticker-item">Weddings</span><span class="ticker-dot">◆</span>
+      <span class="ticker-item">Corporate Events</span><span class="ticker-dot">◆</span>
+      <span class="ticker-item">Fraternity & Sorority Events</span><span class="ticker-dot">◆</span>
+      <span class="ticker-item">Birthday Parties</span><span class="ticker-dot">◆</span>
+      <span class="ticker-item">Graduation Parties</span><span class="ticker-dot">◆</span>
+      <span class="ticker-item">Holiday Parties</span><span class="ticker-dot">◆</span>
+      <span class="ticker-item">Baby Showers</span><span class="ticker-dot">◆</span>
+      <span class="ticker-item">Private Events</span><span class="ticker-dot">◆</span>
+    </div>
+  </div>
+
+  <!-- ─── ABOUT ─── -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual reveal">
+          <div class="about-hex">
+            <div class="about-hex-frame">
+              <div class="about-hex-inner">
+                <div class="about-hex-icon">🍸</div>
+                <div class="about-hex-title">Precision Pour</div>
+                <div class="about-hex-text">Every pour measured. Every moment elevated. Every event unforgettable.</div>
+              </div>
+            </div>
+            <div class="about-badge">
+              <div class="about-badge-num">LLC</div>
+              <div class="about-badge-text">Fully<br>Registered</div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="section-label">Our Story</div>
+          <h2 class="section-title">Where <em>Craft</em> Meets Community</h2>
+          <div class="gold-line"></div>
+          <p class="section-subtitle">
+            Based in Ocala, Florida, Precision Pour LLC was built on a simple belief — every event deserves professional, stress-free bar service. We're a fully insured, dry hire mobile bartending company bringing skill, precision, and personality to events of every size across Marion County and Central Florida.
+          </p>
+          <div class="about-pillars">
+            <div class="about-pillar">
+              <div class="about-pillar-title">Fully Insured</div>
+              <div class="about-pillar-text">$1M per occurrence, $2M aggregate coverage through FLIP. Your event is protected.</div>
+            </div>
+            <div class="about-pillar">
+              <div class="about-pillar-title">Dry Hire Model</div>
+              <div class="about-pillar-text">You supply the alcohol, we bring the expertise, the bar, and the experience.</div>
+            </div>
+            <div class="about-pillar">
+              <div class="about-pillar-title">Locally Rooted</div>
+              <div class="about-pillar-text">Ocala born and community driven. We know the market and we love serving it.</div>
+            </div>
+            <div class="about-pillar">
+              <div class="about-pillar-title">Contract Provided</div>
+              <div class="about-pillar-text">Every booking comes with a formal service agreement. Professional from day one.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SERVICES ─── -->
+  <section id="services">
+    <div class="container">
+      <div class="services-header reveal">
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">Events We <em>Elevate</em></h2>
+        <div class="gold-line"></div>
+        <p class="section-subtitle">From intimate private parties to large-scale celebrations, Precision Pour brings professional bar service to any occasion across Ocala and Central Florida.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-number">01</div>
+          <div class="service-icon">💍</div>
+          <div class="service-title">Weddings & Receptions</div>
+          <div class="service-desc">Your wedding deserves flawless bar service. We work with your vision, your guests, and your timeline to deliver a seamless experience from cocktail hour through last call.</div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-number">02</div>
+          <div class="service-icon">🏢</div>
+          <div class="service-title">Corporate Events</div>
+          <div class="service-desc">Product launches, company parties, client receptions — we bring a polished, professional bar setup that reflects the quality of your brand.</div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-number">03</div>
+          <div class="service-icon">🎓</div>
+          <div class="service-title">Greek Life & Campus Events</div>
+          <div class="service-desc">Fraternity and sorority events require high-volume speed, professionalism, and precision. We handle the bar so your chapter can focus on the experience.</div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-number">04</div>
+          <div class="service-icon">🎂</div>
+          <div class="service-title">Private Celebrations</div>
+          <div class="service-desc">Birthdays, anniversaries, graduations, and everything in between. No event is too intimate or too grand — we bring the same professionalism to every booking.</div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-number">05</div>
+          <div class="service-icon">🎉</div>
+          <div class="service-title">Holiday & Seasonal Parties</div>
+          <div class="service-desc">From New Year's Eve to summer cookouts, holiday events are some of our favorites. Signature seasonal cocktails and full bar service that fits the occasion.</div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-number">06</div>
+          <div class="service-icon">🌟</div>
+          <div class="service-title">Custom & Special Events</div>
+          <div class="service-desc">Something unique? Great. We love creative events. Baby showers, gender reveals, retirement parties, community events — if you're celebrating, we're pouring.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PACKAGES ─── -->
+  <section id="packages">
+    <div class="container">
+      <div class="packages-header reveal">
+        <div class="section-label">Pricing</div>
+        <h2 class="section-title">Choose Your <em>Package</em></h2>
+        <div class="gold-line"></div>
+        <p class="section-subtitle" style="margin: 0 auto; text-align: center;">Simple, transparent pricing with no hidden fees. A 30% non-refundable deposit secures your date. Balance due 7 days prior to your event.</p>
+      </div>
+      <div class="packages-grid">
+        <div class="package-card reveal">
+          <div class="package-tier">Tier 01</div>
+          <div class="package-name">Essential</div>
+          <div class="package-guests">Up to 50 Guests</div>
+          <div class="package-price">
+            <span class="package-price-currency">$</span>
+            <span class="package-price-amount">350</span>
+            <span class="package-price-note">flat rate</span>
+          </div>
+          <ul class="package-features">
+            <li>1 Professional Bartender</li>
+            <li>Up to 3 Hours of Service</li>
+            <li>Portable Bar Setup & Breakdown</li>
+            <li>Full Bar Tools & Supplies</li>
+            <li>Service Contract Included</li>
+            <li>Proof of Insurance Provided</li>
+          </ul>
+          <a href="#contact" class="package-btn package-btn-outline">Book This Package</a>
+        </div>
+        <div class="package-card featured reveal">
+          <div class="package-tier">Tier 02</div>
+          <div class="package-name">Standard</div>
+          <div class="package-guests">51 – 100 Guests</div>
+          <div class="package-price">
+            <span class="package-price-currency">$</span>
+            <span class="package-price-amount">550</span>
+            <span class="package-price-note">flat rate</span>
+          </div>
+          <ul class="package-features">
+            <li>1 Professional Bartender</li>
+            <li>Up to 4 Hours of Service</li>
+            <li>Portable Bar Setup & Breakdown</li>
+            <li>Full Bar Tools & Supplies</li>
+            <li>1 Signature Cocktail Consultation</li>
+            <li>Service Contract Included</li>
+            <li>Proof of Insurance Provided</li>
+          </ul>
+          <a href="#contact" class="package-btn package-btn-filled">Book This Package</a>
+        </div>
+        <div class="package-card reveal">
+          <div class="package-tier">Tier 03</div>
+          <div class="package-name">Premium</div>
+          <div class="package-guests">101 – 150 Guests</div>
+          <div class="package-price">
+            <span class="package-price-currency">$</span>
+            <span class="package-price-amount">900</span>
+            <span class="package-price-note">flat rate</span>
+          </div>
+          <ul class="package-features">
+            <li>2 Professional Bartenders</li>
+            <li>Up to 5 Hours of Service</li>
+            <li>Full Portable Bar Setup & Breakdown</li>
+            <li>Full Bar Tools & Supplies</li>
+            <li>2 Signature Cocktail Consultations</li>
+            <li>Themed Drink Naming Available</li>
+            <li>Service Contract Included</li>
+            <li>Proof of Insurance Provided</li>
+          </ul>
+          <a href="#contact" class="package-btn package-btn-outline">Book This Package</a>
+        </div>
+      </div>
+      <div class="packages-addons reveal">
+        <div class="addons-title">Add-On Services</div>
+        <div class="addons-grid">
+          <div class="addon-item">
+            <div class="addon-price">$75</div>
+            <div class="addon-name">Additional Hour<br><span style="font-weight:300; opacity:0.6">1 Bartender</span></div>
+          </div>
+          <div class="addon-item">
+            <div class="addon-price">$100</div>
+            <div class="addon-name">Additional Hour<br><span style="font-weight:300; opacity:0.6">2 Bartenders</span></div>
+          </div>
+          <div class="addon-item">
+            <div class="addon-price">$175</div>
+            <div class="addon-name">Second Bartender<br><span style="font-weight:300; opacity:0.6">Add-On</span></div>
+          </div>
+          <div class="addon-item">
+            <div class="addon-price">$25</div>
+            <div class="addon-name">Signature Cocktail<br><span style="font-weight:300; opacity:0.6">Consultation</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TRUST BAR ─── -->
+  <div class="trust-bar">
+    <div class="trust-grid">
+      <div class="trust-item reveal">
+        <div class="trust-item-icon">🛡️</div>
+        <div class="trust-item-title">Fully Insured</div>
+        <div class="trust-item-desc">$1M per occurrence / $2M aggregate general & liquor liability through FLIP Insurance</div>
+      </div>
+      <div class="trust-item reveal">
+        <div class="trust-item-icon">📋</div>
+        <div class="trust-item-title">Contract Provided</div>
+        <div class="trust-item-desc">Every event comes with a formal service agreement protecting both parties</div>
+      </div>
+      <div class="trust-item reveal">
+        <div class="trust-item-icon">⚡</div>
+        <div class="trust-item-title">Fast Response</div>
+        <div class="trust-item-desc">Invoice and proof of insurance delivered within 24 hours of inquiry</div>
+      </div>
+      <div class="trust-item reveal">
+        <div class="trust-item-icon">📍</div>
+        <div class="trust-item-title">Ocala & Beyond</div>
+        <div class="trust-item-desc">Serving Marion County, The Villages, Gainesville, and surrounding Central Florida areas</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── HOW IT WORKS ─── -->
+  <section id="how-it-works">
+    <div class="container">
+      <div class="hiw-header reveal">
+        <div class="section-label">The Process</div>
+        <h2 class="section-title">Simple as <em>One, Two, Three</em></h2>
+        <div class="gold-line"></div>
+      </div>
+      <div class="hiw-steps">
+        <div class="hiw-step reveal">
+          <div class="hiw-step-number">01</div>
+          <div class="hiw-step-title">Inquire & Consult</div>
+          <div class="hiw-step-desc">Fill out our contact form with your event details. We'll respond within 24 hours to discuss your vision, guest count, drink preferences, and answer any questions.</div>
+        </div>
+        <div class="hiw-step reveal">
+          <div class="hiw-step-number">02</div>
+          <div class="hiw-step-title">Review & Sign</div>
+          <div class="hiw-step-desc">We send your custom invoice and service contract. Review everything, sign the agreement, and pay your 30% deposit to officially secure your date.</div>
+        </div>
+        <div class="hiw-step reveal">
+          <div class="hiw-step-number">03</div>
+          <div class="hiw-step-title">Prepare Together</div>
+          <div class="hiw-step-desc">We work with you on your drink menu and signature cocktail selections. You handle the alcohol purchase — we give you a detailed shopping guide to make it easy.</div>
+        </div>
+        <div class="hiw-step reveal">
+          <div class="hiw-step-number">04</div>
+          <div class="hiw-step-title">We Show Up & Pour</div>
+          <div class="hiw-step-desc">On event day we arrive early, set up completely, and serve your guests professionally from start to finish. You focus on enjoying your event — we handle the bar.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── GALLERY ─── -->
+  <section id="gallery">
+    <div class="gallery-header reveal">
+      <div class="section-label">Gallery</div>
+      <h2 class="section-title">Moments We've <em>Crafted</em></h2>
+      <div class="gold-line"></div>
+      <p class="section-subtitle" style="margin: 0 auto; text-align: center;">Photos from our events coming soon. Follow us on Instagram for behind-the-scenes content and event highlights.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal">
+        <div class="gallery-overlay"></div>
+        <div class="gallery-placeholder-icon">🍹</div>
+        <div class="gallery-placeholder-text">Event Photos Coming Soon</div>
+      </div>
+      <div class="gallery-item reveal">
+        <div class="gallery-overlay"></div>
+        <div class="gallery-placeholder-icon">🥂</div>
+        <div class="gallery-placeholder-text">Bar Setup</div>
+      </div>
+      <div class="gallery-item reveal">
+        <div class="gallery-overlay"></div>
+        <div class="gallery-placeholder-icon">🍸</div>
+        <div class="gallery-placeholder-text">Signature Cocktails</div>
+      </div>
+      <div class="gallery-item reveal">
+        <div class="gallery-overlay"></div>
+        <div class="gallery-placeholder-icon">✨</div>
+        <div class="gallery-placeholder-text">Event Moments</div>
+      </div>
+      <div class="gallery-item reveal">
+        <div class="gallery-overlay"></div>
+        <div class="gallery-placeholder-icon">🎉</div>
+        <div class="gallery-placeholder-text">Celebrations</div>
+      </div>
+    </div>
+    <div class="gallery-cta reveal">
+      <a href="https://instagram.com" target="_blank" class="btn-primary">Follow on Instagram</a>
+    </div>
+  </section>
+
+  <!-- ─── TESTIMONIALS ─── -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="testimonials-header reveal">
+        <div class="section-label">Reviews</div>
+        <h2 class="section-title">What Our <em>Clients Say</em></h2>
+        <div class="gold-line"></div>
+      </div>
+      <div class="testimonials-placeholder reveal">
+        <p>⭐⭐⭐⭐⭐</p>
+        <br>
+        <p>We're just getting started — reviews and testimonials will appear here after our first events.<br>We're committed to earning 5 stars at every single booking.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ─── -->
+  <section id="faq">
+    <div class="container">
+      <div class="faq-grid">
+        <div class="reveal">
+          <div class="section-label">FAQ</div>
+          <h2 class="section-title">Common <em>Questions</em></h2>
+          <div class="gold-line"></div>
+          <p class="section-subtitle">Have a question not answered here? Reach out directly through our contact form and we'll get back to you within 24 hours.</p>
+          <br><br>
+          <a href="#contact" class="btn-primary">Ask Us Directly</a>
+        </div>
+        <div class="faq-list reveal">
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              What is dry hire bartending?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">Dry hire means you supply the alcohol and we supply everything else — the bartenders, the portable bar, all tools, supplies, and expertise. This gives you full control over your alcohol budget while we handle all the professional execution.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              How much alcohol should I buy?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">We provide every client with a detailed shopping guide based on your guest count, event length, and drink menu. You'll know exactly what to buy and how much, so there's no guessing or wasted money.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              Are you fully insured?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">Yes. Precision Pour LLC carries $1 million per occurrence and $2 million aggregate general liability and liquor liability insurance through FLIP Insurance. We can provide proof of insurance and add your venue as an additional insured upon request.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              How far do you travel?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">We're based in Ocala and serve all of Marion County with no travel fee within 15 miles. Travel fees apply beyond that — $35 for 16-30 miles, $65 for 31-50 miles, $100 for 51-75 miles. Beyond 75 miles is quoted individually.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              What is your cancellation policy?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">Your 30% deposit is non-refundable and secures your date. Cancellations more than 30 days out forfeit the deposit only. Cancellations within 14 days of the event are subject to full payment. Full cancellation policy is detailed in your service contract.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              Can you create custom signature cocktails?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">Absolutely. Signature cocktail consultation is included in our Standard and Premium packages, and available as an add-on for Essential bookings at $25 per cocktail. We'll work with you to create drinks that fit your event theme, colors, or preferences.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              How do I book?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">Fill out the contact form below with your event details. We'll respond within 24 hours with availability, a custom quote, and next steps. Once you're ready, we send your invoice and contract. Your 30% deposit locks in your date.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ─── -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="reveal">
+          <div class="section-label">Get in Touch</div>
+          <h2 class="section-title">Let's Plan Your <em>Event</em></h2>
+          <div class="gold-line"></div>
+          <p class="section-subtitle">Ready to elevate your event? Fill out the form and we'll be in touch within 24 hours with availability and a custom quote.</p>
+          <div class="contact-info-items">
+            <div class="contact-info-item">
+              <div class="contact-info-icon">📍</div>
+              <div>
+                <div class="contact-info-label">Location</div>
+                <div class="contact-info-value">Ocala, Florida & Central Florida</div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon">🛡️</div>
+              <div>
+                <div class="contact-info-label">Insurance</div>
+                <div class="contact-info-value">$1M / $2M General & Liquor Liability</div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon">⏱️</div>
+              <div>
+                <div class="contact-info-label">Response Time</div>
+                <div class="contact-info-value">Within 24 hours</div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon">📅</div>
+              <div>
+                <div class="contact-info-label">Booking Window</div>
+                <div class="contact-info-value">Minimum 14 days in advance</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal">
+          <form class="contact-form" action="https://formspree.io/f/xaqpklzy" method="POST">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name *</label>
+                <input type="text" placeholder="John" name="first_name" required />
+              </div>
+              <div class="form-group">
+                <label>Last Name *</label>
+                <input type="text" placeholder="Smith" name="last_name" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address *</label>
+              <input type="email" placeholder="john@email.com" name="email" required />
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" placeholder="(352) 000-0000" name="phone" />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Event Date *</label>
+                <input type="date" name="event_date" required />
+              </div>
+              <div class="form-group">
+                <label>Event Type *</label>
+                <select name="event_type" required>
+                  <option value="" disabled selected>Select event type</option>
+                  <option>Wedding / Reception</option>
+                  <option>Corporate Event</option>
+                  <option>Fraternity / Sorority Event</option>
+                  <option>Birthday Party</option>
+                  <option>Graduation Party</option>
+                  <option>Holiday Party</option>
+                  <option>Baby Shower</option>
+                  <option>Private Celebration</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Expected Guest Count *</label>
+                <select name="guest_count" required>
+                  <option value="" disabled selected>Select range</option>
+                  <option>Under 50 guests</option>
+                  <option>51 – 100 guests</option>
+                  <option>101 – 150 guests</option>
+                  <option>151 – 200 guests</option>
+                  <option>200+ guests</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Package Interest</label>
+                <select name="package_interest">
+                  <option value="" disabled selected>Select package</option>
+                  <option>Essential — $350</option>
+                  <option>Standard — $550</option>
+                  <option>Premium — $900</option>
+                  <option>Large Event — Custom Quote</option>
+                  <option>Not Sure Yet</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Event Location / Venue</label>
+              <input type="text" placeholder="Venue name or address in Ocala, FL" name="venue" />
+            </div>
+            <div class="form-group">
+              <label>Tell Us About Your Event</label>
+              <textarea placeholder="Share any details about your event, special requests, drink preferences, or questions you have..." name="message"></textarea>
+            </div>
+            <button type="submit" class="form-submit">Send Inquiry →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Precision <span>Pour</span></div>
+        <div class="footer-brand-tagline">Crafted Drinks. Elevated Events.</div>
+        <p class="footer-brand-desc">Professional mobile bartending services for events of every size across Ocala, Florida and Central Florida. Fully insured, fully professional, fully committed to your event.</p>
+        <div class="footer-social">
+          <a href="#" title="Instagram">📷</a>
+          <a href="#" title="TikTok">🎵</a>
+          <a href="#" title="Facebook">📘</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="#services">Weddings</a></li>
+          <li><a href="#services">Corporate Events</a></li>
+          <li><a href="#services">Greek Life Events</a></li>
+          <li><a href="#services">Private Parties</a></li>
+          <li><a href="#services">Holiday Events</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#packages">Packages</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Service Area</div>
+        <ul class="footer-links">
+          <li><a href="#contact">Ocala, FL</a></li>
+          <li><a href="#contact">The Villages</a></li>
+          <li><a href="#contact">Gainesville</a></li>
+          <li><a href="#contact">Crystal River</a></li>
+          <li><a href="#contact">Lakeland</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">© 2026 Precision Pour LLC — All Rights Reserved. Ocala, Florida.</div>
+      <div class="footer-insurance">🛡️ $1M / $2M Insured via FLIP Insurance</div>
+    </div>
+  </footer>
+
+  <script>
+    // ─── NAVBAR SCROLL ───
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ─── MOBILE MENU ───
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    // ─── SCROLL REVEAL ───
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // ─── FAQ TOGGLE ───
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // ─── FORM SUBMIT ───
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      btn.textContent = '✓ Inquiry Sent!';
+      btn.style.background = '#2d5a27';
+      btn.style.color = '#fff';
+      setTimeout(() => {
+        btn.textContent = 'Send Inquiry →';
+        btn.style.background = '';
+        btn.style.color = '';
+        e.target.reset();
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
