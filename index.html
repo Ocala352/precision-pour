@@ -905,6 +905,44 @@
 
   .form-submit:hover { background: var(--gold-light); }
 
+  /* DRY HIRE TOOLTIP */
+  .dry-hire-tip {
+    position: relative;
+    color: var(--black);
+    font-weight: 600;
+    border-bottom: 1px dashed var(--gray-400);
+    cursor: help;
+  }
+  .dry-hire-tooltip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--black);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.6;
+    padding: 12px 16px;
+    width: 280px;
+    z-index: 50;
+    pointer-events: none;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .dry-hire-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--black);
+  }
+  .dry-hire-tip:hover .dry-hire-tooltip,
+  .dry-hire-tip:focus .dry-hire-tooltip { display: block; }
+
   /* FOOTER */
   footer {
     background: var(--black);
@@ -1026,9 +1064,10 @@
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <p class="hero-eyebrow">Ocala, Florida · Mobile Bartending · Fully Insured</p>
-  <h1>Crafted<br>Drinks.<br><em>Elevated</em><br>Events.</h1>
-  <p class="hero-sub">Precision Pour LLC brings professional, fully insured dry hire bartending to your event. You handle the alcohol — we handle everything else.</p>
+  <p class="hero-eyebrow">Ocala, Florida · Fully Insured</p>
+  <p style="font-size:clamp(1.1rem,2.5vw,1.6rem);font-weight:900;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;line-height:1;">Mobile Bartending</p>
+  <h1>Your Bar.<br><em>Elevated.</em></h1>
+  <p class="hero-sub">Professional, fully insured mobile bartending brought directly to your event. You bring the people — we bring the bar, the skill, and the experience.</p>
   <div class="hero-actions">
     <a href="#pricing" class="btn-primary">View Pricing</a>
     <a href="#contact" class="btn-outline">Request a Quote</a>
@@ -1080,7 +1119,7 @@
 
   <div class="about-grid">
     <div>
-      <p style="font-size: 15px; color: var(--gray-600); line-height: 1.8; margin-bottom: 2rem;">We are a fully insured, dry hire mobile bartending company serving Marion County and Central Florida. Every booking comes with a formal service agreement, proof of insurance, and a team that shows up prepared.</p>
+      <p style="font-size: 15px; color: var(--gray-600); line-height: 1.8; margin-bottom: 2rem;">We are a fully insured, <span class="dry-hire-tip" tabindex="0">dry hire<span class="dry-hire-tooltip">Dry hire means you supply the alcohol — we bring everything else. The bartenders, the portable bar, all tools and supplies, and the professional expertise to run your bar flawlessly. You control your alcohol budget; we handle the execution.</span></span> mobile bartending company serving Marion County and Central Florida. Every booking comes with a formal service agreement, proof of insurance, and a team that shows up prepared.</p>
       <p style="font-size: 15px; color: var(--gray-600); line-height: 1.8;">Dry hire means you control your alcohol budget — we bring the bartenders, the portable bar, all tools and supplies, and the expertise to run it flawlessly.</p>
     </div>
     <div class="about-pillars">
@@ -1110,36 +1149,26 @@
   <h2 class="section-title">Events We<br><em>Elevate.</em></h2>
   <p class="section-sub">From intimate gatherings to large-scale celebrations, we bring professional bar service to any occasion across Ocala and Central Florida.</p>
 
-  <div class="services-grid">
+  <div class="services-grid" style="grid-template-columns: repeat(2, 1fr);">
     <div class="service-card">
       <div class="service-num">01</div>
       <div class="service-title">Weddings & Receptions</div>
-      <div class="service-text">Flawless bar service from cocktail hour through last call. We work with your vision, your guests, and your timeline.</div>
+      <div class="service-text">From cocktail hour through last call — we work around your timeline, your guests, and your vision.</div>
     </div>
     <div class="service-card">
       <div class="service-num">02</div>
-      <div class="service-title">Corporate Events</div>
-      <div class="service-text">Product launches, company parties, client receptions. A polished setup that reflects the quality of your brand.</div>
+      <div class="service-title">Corporate & Private Events</div>
+      <div class="service-text">Company parties, client receptions, milestone celebrations. A polished bar that reflects the quality of your brand.</div>
     </div>
     <div class="service-card">
       <div class="service-num">03</div>
-      <div class="service-title">Greek Life & Campus</div>
-      <div class="service-text">High-volume speed, precision, and professionalism. We handle the bar so your chapter focuses on the experience.</div>
+      <div class="service-title">Parties & Celebrations</div>
+      <div class="service-text">Birthdays, graduations, baby showers, holiday parties — any reason to celebrate, we're there to pour.</div>
     </div>
     <div class="service-card">
       <div class="service-num">04</div>
-      <div class="service-title">Private Celebrations</div>
-      <div class="service-text">Birthdays, anniversaries, graduations, and everything in between. Same professionalism at every size.</div>
-    </div>
-    <div class="service-card">
-      <div class="service-num">05</div>
-      <div class="service-title">Holiday & Seasonal</div>
-      <div class="service-text">New Year's Eve, summer cookouts, holiday parties. Seasonal cocktails and full bar service that fits the occasion.</div>
-    </div>
-    <div class="service-card">
-      <div class="service-num">06</div>
-      <div class="service-title">Custom Events</div>
-      <div class="service-text">Baby showers, gender reveals, retirement parties, community events. If you're celebrating, we're pouring.</div>
+      <div class="service-title">Greek Life & Community</div>
+      <div class="service-text">High-volume, high-energy events handled with speed and professionalism. Your chapter focuses on the moment — we handle the bar.</div>
     </div>
   </div>
 </section>
@@ -1243,12 +1272,16 @@
     <div class="quote-left">
       <div class="quote-tag">Tier 04 · Large Scale</div>
       <div class="quote-title">151+ Guests? Let's Build<br>a Custom Package.</div>
-      <p class="quote-text">Weddings, corporate parties, large receptions, and multi-bartender events are all handled on a custom quote basis — so you get exactly what your event needs at the right price.</p>
+      <p class="quote-text">Weddings, corporate parties, large receptions, and multi-bartender events are handled on a custom quote basis — so you get exactly what your event needs at the right price.</p>
+      <div style="display:flex;align-items:baseline;gap:6px;margin-top:1.25rem;">
+        <span style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray-600);">Starting from</span>
+        <span style="font-size:2rem;font-weight:900;color:var(--black);letter-spacing:-0.02em;">$950</span>
+      </div>
       <div class="quote-events">
         <span class="quote-tag-pill">Weddings</span>
         <span class="quote-tag-pill">Corporate Parties</span>
         <span class="quote-tag-pill">Large Receptions</span>
-        <span class="quote-tag-pill">200+ Guests</span>
+        <span class="quote-tag-pill">151+ Guests</span>
       </div>
     </div>
     <a href="#contact" class="btn-primary">Request a Custom Quote</a>
@@ -1380,7 +1413,10 @@
           How do I book?
           <span class="faq-arrow">+</span>
         </div>
-        <div class="faq-a">Fill out the contact form below with your event details. We'll respond within 24 hours with availability and a custom quote. Once you're ready, we send your invoice and contract. Your 30% deposit locks in your date.</div>
+        <div class="faq-a">It's simple — just click the button below and you'll go straight to our booking form. Fill out your event details, select any add-ons, and submit. We'll respond within 24 hours with availability and a quote. Your 30% deposit locks in your date.
+          <br><br>
+          <a href="#contact" style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;background:var(--black);color:var(--white);padding:12px 22px;text-decoration:none;margin-top:0.25rem;transition:background 0.2s;" onmouseover="this.style.background='#333'" onmouseout="this.style.background='var(--black)'">Book Now →</a>
+        </div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
